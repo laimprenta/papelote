@@ -1,3 +1,23 @@
+api_site:
+    resource: "@ApiBundle/Controller/SiteController.php"
+    type:     annotation
+
+api_article:
+    resource: "@ApiBundle/Controller/ArticleController.php"
+    type:     annotation
+
+api_article_category:
+    resource: "@ApiBundle/Controller/ArticleCategoryController.php"
+    type:     annotation
+
+api_article:
+    resource: "@ApiBundle/Controller/ArticleController.php"
+    type:     annotation
+
+api:
+    resource: "@ApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
