@@ -1,0 +1,129 @@
+{% extends '@Api/Templates/adminTemplate.html.twig' %}
+
+{% block bodyArticle %}
+    <h2 class="page-header">Creando un papelote!<br></h2>
+   {# {{ form_start(form) }}
+
+
+
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}#}
+
+    <h4>
+     <div class="btn-group">
+        <button data-toggle="tooltip" class="btn btn-primary" title="Vista previa"><i class="glyphicon glyphicon-eye-open"></i></button>
+        <button data-toggle="tooltip" id="hideMenu" class="btn btn-primary" title="Ocultar/Mostrar menu"><i class="glyphicon glyphicon-resize-horizontal"></i></button>
+    </div>
+    Construye el contenido de tu papelote
+    </h4>
+
+    <br>
+    {{ include('@Api/Components/editor.html.twig') }}
+    <div id=""></div>
+    <ul>
+        <li>
+            <a href="{{ path('article_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block addJs %}
+ <script>
+        $(document).ready(function(){
+            //Ocultamos el menú al cargar la página
+            $("#context").hide();
+            /* mostramos el menú si hacemos click derecho
+             con el ratón */
+            $(document).bind("contextmenu", function(e){
+                $("#context").css({'display':'block', 'left':e.pageX-400, 'top':e.pageY-20});
+                return false;
+            });
+            //cuando hagamos click, el menú desaparecerá
+            $(document).click(function(e){
+                if(e.button == 0){
+                    $("#context").css("display", "none");
+                }
+            });
+            //si pulsamos escape, el menú desaparecerá
+            $(document).keydown(function(e){
+                if(e.keyCode == 27){
+                    $("#context").css("display", "none");
+                }
+            });
+            //controlamos los botones del menú
+            $("#context").click(function(e){
+                var str = e.target.id;
+                if(str!=''){
+                    addRow(str.substr(1));
+                }
+
+            });
+        });
+    </script>
+ <script>
+     //Put news cols
+     function addRow(type) {
+         $('.cleaner').remove();
+         var div = $('<div class="col-sm-'+type+' component" aria-type="component" aria-key="'+generateId(8)+'" ' +
+             'onclick="enableEditable(this)"></div>');
+         var newCleaner = $('<div class="cleaner"></div>');
+         $('.papelote-view').append(div);
+         $('.papelote-view').append(newCleaner);
+     }
+
+     //Making Editable a component
+        function enableEditable(obj){
+            $(obj).attr('contenteditable', true);
+            $(".btn-toolbar").show();
+            $(".btn-toolbar").attr('aria-binded',$(obj).attr('aria-key'));
+        }
+        function disableBar() {
+            $(".btn-toolbar").hide();
+            $(".btn-toolbar").attr('aria-binded','');
+        }
+
+
+ </script>
+
+ <script>
+    //Editor
+    $('#tools-RemoveComponent').on('click',function () {
+        var selectedComponentId = $(".btn-toolbar").attr('aria-binded');
+        var componentObjectDom = $('div').find("[aria-key='"+selectedComponentId+"']");
+        componentObjectDom.remove();
+
+    });
+ </script>
+
+
+
+ <script>
+     //Main editor bar
+     $("#hideMenu").click(function(){
+         $("#usermenu").toggle();
+         if($("#contentBody").hasClass('col-sm-9')){
+             $("#contentBody").removeClass('col-sm-9');
+             $("#contentBody").addClass('col-sm-12');
+         }else{
+             $("#contentBody").removeClass('col-sm-12');
+             $("#contentBody").addClass('col-sm-9');
+         }
+     });
+ </script>
+
+
+
+  <script>
+      //Generate string for id of Divs
+      // dec2hex :: Integer -> String
+      function dec2hex (dec) {
+          return ('0' + dec.toString(16)).substr(-2)
+      }
+
+      // generateId :: Integer -> String
+      function generateId (len) {
+          var arr = new Uint8Array((len || 40) / 2)
+          window.crypto.getRandomValues(arr)
+          return Array.from(arr).map(dec2hex).join('')
+      }
+  </script>
+{% endblock %}

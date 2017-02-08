@@ -1,0 +1,27 @@
+{% extends '@Api/Templates/apiTemplate.html.twig' %}
+
+{% block addCss %}
+    <link rel="stylesheet" href="{{ asset('/papelote/assets/css/adminStyle.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="col-sm-3 menu" id="usermenu">
+
+            {{ render(controller('ApiBundle:Admin:adminMenu')) }}
+        </div>
+        <div class="col-sm-9" id="contentBody">
+            <div class="col-sm-12 contentBody" >
+                {% block bodyArticle %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

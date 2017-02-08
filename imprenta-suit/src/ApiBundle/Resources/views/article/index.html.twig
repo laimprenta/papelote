@@ -1,0 +1,40 @@
+{% extends '@Api/Templates/adminTemplate.html.twig' %}
+
+{% block bodyArticle %}
+
+    <h2 class="page-header">Papelotes</h2>
+
+    <table class="table table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td>{{ article.name }}</td>
+
+                <td>
+                            <a class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Mostrar" href="{{ path('article_show', { 'id': article.id }) }}">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </a>
+                            <a class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar" href="{{ path('article_edit', { 'id': article.id }) }}">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+            <a class="btn btn-primary" href="{{ path('article_new') }}">Crear nuevo papelote</a>
+
+
+    <br><br>
+{% endblock %}

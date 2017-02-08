@@ -1,0 +1,80 @@
+body{
+    background: url("../img/back3.png") repeat;
+}
+
+.cont{
+   margin-top: 20px!important;
+   margin-bottom: 20px;
+}
+.profile-usermenu {
+    background-color: white;
+    margin-top: 40px;
+}
+.menu-wrapper{
+    background-color: #FFFFFF;
+    width: 20%;
+    position: fixed;
+}
+.contentBody{
+    background-color: white;
+    padding: 0 30px;
+    margin-top: 40px;
+}
+
+/*Papelote builder*/
+.papelote-builder{
+    width: 100%;
+    border: 1px dashed #eeeeee;
+    position: relative;
+}
+.papelote-view{
+    min-height: 400px!important;
+ }
+.papelote-view div:last-child{
+    clear: both;
+}
+
+#context{
+    padding: 0 15px 15px 15px;
+    position:absolute;
+    width: 500px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    background-color: #f6f6f6;
+}
+
+.papelote-view div.component{
+    border: 1px dotted #eeeeee;
+    min-height: 100px;
+}
+.papelote-view div.component:hover{
+    border: 1px dotted #218BC3;
+    background-color: #eeeeee;
+}
+.cleaner{
+    clear: both;
+    height: 0!important;
+    border: none!important;
+}
+#context ul li{
+    display: inline;
+    padding-top: 5px;
+}
+#context ul li a{
+    min-width: 100px;
+    margin-top: 10px;
+}
+.papelote-builder-tools{
+
+}
+.btn-toolbar{
+    display: none;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    top:0;
+    left: 0;
+    background-color: rgba(225,225,225,0.80);
+    padding: 10px;
+}

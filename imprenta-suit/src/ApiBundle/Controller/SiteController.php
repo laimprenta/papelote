@@ -26,7 +26,7 @@ class SiteController extends Controller
 
         $sites = $em->getRepository('ApiBundle:Site')->findAll();
 
-        return $this->render('site/index.html.twig', array(
+        return $this->render('@Api/site/index.html.twig', array(
             'sites' => $sites,
         ));
     }
@@ -51,7 +51,7 @@ class SiteController extends Controller
             return $this->redirectToRoute('site_show', array('id' => $site->getId()));
         }
 
-        return $this->render('site/new.html.twig', array(
+        return $this->render('@Api/site/new.html.twig', array(
             'site' => $site,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class SiteController extends Controller
     {
         $deleteForm = $this->createDeleteForm($site);
 
-        return $this->render('site/show.html.twig', array(
+        return $this->render('@Api/site/show.html.twig', array(
             'site' => $site,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class SiteController extends Controller
             return $this->redirectToRoute('site_edit', array('id' => $site->getId()));
         }
 
-        return $this->render('site/edit.html.twig', array(
+        return $this->render('@Api/site/edit.html.twig', array(
             'site' => $site,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -1,0 +1,33 @@
+{% extends '@Api/Templates/adminTemplate.html.twig' %}
+
+{% block bodyArticle %}
+
+        <h2 class="page-header">Lista de sitios</h2>
+
+        <table class="table table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Token de seguridad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for site in sites %}
+                <tr>
+                    <td><a href="{{ path('site_show', { 'id': site.id }) }}">{{ site.id }}</a></td>
+                    <td>{{ site.name }}</td>
+                    <td>{{ site.securityToken }}</td>
+                    <td>
+                         <a data-toggle="tooltip" data-placement="top" title="Mostrar" href="{{ path('site_show', { 'id': site.id }) }}"  class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a>
+                         <a data-toggle="tooltip" data-placement="top" title="Editar"  href="{{ path('site_edit', { 'id': site.id }) }}" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+            <a class="btn btn-primary" href="{{ path('site_new') }}">Crear nuevo sitio</a>
+            <br><br>
+{% endblock %}
