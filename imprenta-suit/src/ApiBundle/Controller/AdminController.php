@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class AdminController extends Controller
 {
     /*
-     * Esto es un comentario
+     * Esto es un comentario de dos
     */
     public function adminMenuAction()
     {
